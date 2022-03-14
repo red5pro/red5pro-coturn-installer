@@ -21,7 +21,7 @@
 FQDN=$1
 # $FQDN validation
 if [ -z "$FQDN" ]; then
-  echo "usage: r5wcoturninstall.sh FQDN or EXTERNAL_IP"
+  echo "usage: r5coturninstall.sh FQDN or EXTERNAL_IP"
   echo "example: ./r5coturninstall.sh turnserver.example.org"
   echo "example: ./r5coturninstall.sh 10.0.0.1"
   exit
