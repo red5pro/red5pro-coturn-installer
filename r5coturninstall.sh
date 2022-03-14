@@ -15,14 +15,14 @@
 # usage:
 # ./r5coturninstall.sh $FQDN
 # example: 
-# ./r5coturninstall.sh watchparty.red5.net
+# ./r5coturninstall.sh turnserver.example.org
 #
 
 FQDN=$1
 # $FQDN validation
 if [ -z "$FQDN" ]; then
   echo "usage: r5wcoturninstall.sh FQDN or EXTERNAL_IP"
-  echo "example: ./r5coturninstall.sh watchparty.red5.net"
+  echo "example: ./r5coturninstall.sh turnserver.example.org"
   echo "example: ./r5coturninstall.sh 10.0.0.1"
   exit
 fi
@@ -50,3 +50,4 @@ if [ ! -f /etc/turnserver.conf ]; then
   echo "... coturn server installation failed ..."
   exit
 fi
+meet.google.com/tbf-mkpo-aog
