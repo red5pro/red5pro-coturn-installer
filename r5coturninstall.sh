@@ -24,7 +24,7 @@ if [ -z "$FQDN" ]; then
   echo "usage: r5coturninstall.sh FQDN or EXTERNAL_IP"
   echo "example: ./r5coturninstall.sh turnserver.example.org"
   echo "example: ./r5coturninstall.sh 10.0.0.1"
-  exit
+  exit 1
 fi
 
 # update apt
@@ -48,7 +48,7 @@ else
 fi
 if [ ! -f /etc/turnserver.conf ]; then
   echo "... coturn server installation failed ..."
-  exit
+  exit 2
 fi
 
 # configure red5 for local coturn server
@@ -60,5 +60,7 @@ if [ -d /usr/local/red5pro/webapps/live/script ]; then
   systemctl restart red5pro
 else
   echo "... red5pro not installed properly webapps/live/script is missing ..."
-  exit
+  exit 3
 fi
+
+echo "... installation complete ..."
