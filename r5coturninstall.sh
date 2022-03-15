@@ -50,4 +50,15 @@ if [ ! -f /etc/turnserver.conf ]; then
   echo "... coturn server installation failed ..."
   exit
 fi
-meet.google.com/tbf-mkpo-aog
+
+# configure red5 for local coturn server
+if [ -d /usr/local/red5pro/webapps/live/script ]; then
+  echo "... configuring red5pro for local coturn ..."
+  sed -i 's/var iceServers.*/var iceServers = [{ urls: "stun:'"$FQDN"':3478" }]/g' /usr/local/red5pro/webapps/live/script/r5pro-publisher-failover.js
+  sed -i 's/var iceServers.*/var iceServers = [{ urls: "stun:'"$FQDN"':3478" }]/g' /usr/local/red5pro/webapps/live/script/r5pro-subscriber-failover.js
+  sed -i 's/var iceServers.*/var iceServers = [{ urls: "stun:'"$FQDN"':3478" }]/g' /usr/local/red5pro/webapps/live/script/r5pro-viewer-failover.js
+  systemctl restart red5pro
+else
+  echo "... red5pro not installed properly webapps/live/script is missing ..."
+  exit
+fi
