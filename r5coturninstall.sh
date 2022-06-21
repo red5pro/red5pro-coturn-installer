@@ -2,7 +2,7 @@
 #
 # r5watchinstall.sh
 #
-# Coturn Install Script
+# Coturn Installation Script
 #
 # port requirements:
 # tcp: 3478
