@@ -27,16 +27,19 @@ if [ -z "$FQDN" ]; then
   exit 1
 fi
 
+# update apt
+echo "... updating apt ..."
+apt update
+apt -y install software-properties-common dirmngr apt-transport-https lsb-release ca-certificates
+
 # install coturn ppa
 . /etc/lsb-release
 if [ "$DISTRIB_RELEASE" = "22.04" ]; then
   echo "... configuring coturn ppa for ubuntu 22.04 ..."
   add-apt-repository ppa:ubuntuhandbook1/coturn
+  apt update
 fi
 
-# update apt
-echo "... updating apt ..."
-apt update
 
 # install coturn server
 if [ ! -f /etc/turnserver.conf ]; then
