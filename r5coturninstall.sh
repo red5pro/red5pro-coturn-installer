@@ -40,7 +40,6 @@ if [ "$DISTRIB_RELEASE" = "22.04" ]; then
   apt update
 fi
 
-
 # install coturn server
 if [ ! -f /etc/turnserver.conf ]; then
   echo "... installing coturn server ..."
