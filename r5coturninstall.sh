@@ -27,6 +27,13 @@ if [ -z "$FQDN" ]; then
   exit 1
 fi
 
+# install coturn ppa
+. /etc/lsb-release
+if [ "$DISTRIB_RELEASE" = "22.04" ]; then
+  echo "... configuring coturn ppa for ubuntu 22.04 ..."
+  add-apt-repository ppa:ubuntuhandbook1/coturn
+fi
+
 # update apt
 echo "... updating apt ..."
 apt update
@@ -34,6 +41,7 @@ apt update
 # install coturn server
 if [ ! -f /etc/turnserver.conf ]; then
   echo "... installing coturn server ..."
+
   apt install -y coturn
   echo "" >> /etc/turnserver.conf
   echo "listening-ip=0.0.0.0" >> /etc/turnserver.conf
